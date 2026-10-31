@@ -1,4 +1,5 @@
 import { artworkUrl, idFromUrl } from '../api'
+import { capitalize } from '../format'
 import type { PokemonListItem } from '../types'
 
 interface Props {
@@ -14,18 +15,18 @@ export function PokemonCard({ item, onSelect }: Props) {
       type="button"
       className="card"
       onClick={() => onSelect(item.name)}
-      aria-label={`Ver detalles de ${item.name}`}
+      aria-label={`Ver detalles de ${capitalize(item.name)}`}
     >
       <span className="card__id">#{String(id).padStart(3, '0')}</span>
       <img
         className="card__img"
         src={artworkUrl(id)}
-        alt={item.name}
+        alt={capitalize(item.name)}
         loading="lazy"
         width={160}
         height={160}
       />
-      <span className="card__name">{item.name}</span>
+      <span className="card__name">{capitalize(item.name)}</span>
       <span className="card__cta">Ver ficha →</span>
     </button>
   )

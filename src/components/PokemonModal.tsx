@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { fetchPokemonDetail } from '../api'
+import { capitalize } from '../format'
 import type { PokemonDetail } from '../types'
 
 interface Props {
@@ -73,17 +74,17 @@ export function PokemonModal({ name, onClose }: Props) {
               <img
                 className="sheet__img"
                 src={shiny && detail.shinyImage ? detail.shinyImage : detail.image}
-                alt={detail.name}
+                alt={capitalize(detail.name)}
                 width={220}
                 height={220}
               />
               <div>
                 <span className="sheet__id">#{String(detail.id).padStart(3, '0')}</span>
-                <h2 className="sheet__name">{detail.name}</h2>
+                <h2 className="sheet__name">{capitalize(detail.name)}</h2>
                 <div className="chips">
                   {detail.types.map((type) => (
                     <span key={type} className={`chip type-${type}`}>
-                      {type}
+                      {capitalize(type)}
                     </span>
                   ))}
                 </div>
@@ -116,7 +117,9 @@ export function PokemonModal({ name, onClose }: Props) {
             <ul className="stats">
               {detail.stats.map((stat) => (
                 <li key={stat.name} className="stat">
-                  <span className="stat__label">{STAT_LABELS[stat.name] ?? stat.name}</span>
+                  <span className="stat__label">
+                    {STAT_LABELS[stat.name] ?? capitalize(stat.name)}
+                  </span>
                   <span className="stat__bar">
                     <span
                       className="stat__fill"
@@ -132,7 +135,7 @@ export function PokemonModal({ name, onClose }: Props) {
             <div className="chips">
               {detail.abilities.map((ability) => (
                 <span key={ability} className="chip chip--neutral">
-                  {ability}
+                  {capitalize(ability)}
                 </span>
               ))}
             </div>
