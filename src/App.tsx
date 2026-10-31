@@ -2,10 +2,13 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { PAGE_SIZE, fetchPokemonDetail, fetchPokemonPage } from './api'
 import { PokemonCard } from './components/PokemonCard'
 import { PokemonModal } from './components/PokemonModal'
+import { ThemeSwitch } from './components/ThemeSwitch'
 import type { PokemonListItem } from './types'
+import { useTheme } from './useTheme'
 import './App.css'
 
 function App() {
+  const { theme, toggleTheme } = useTheme()
   const [items, setItems] = useState<PokemonListItem[]>([])
   const [total, setTotal] = useState(0)
   const [offset, setOffset] = useState(0)
@@ -69,7 +72,10 @@ function App() {
   return (
     <div className="page">
       <header className="hero">
-        <div className="hero__badge">POKÉDEX</div>
+        <div className="hero__top">
+          <div className="hero__badge">POKÉDEX</div>
+          <ThemeSwitch theme={theme} onToggle={toggleTheme} />
+        </div>
         <h1 className="hero__title">
           Pokédex <span className="hero__title-accent">/ PokeAPI</span>
         </h1>
