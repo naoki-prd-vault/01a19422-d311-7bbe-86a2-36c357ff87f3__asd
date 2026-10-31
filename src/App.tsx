@@ -69,9 +69,9 @@ function App() {
   return (
     <div className="page">
       <header className="hero">
-        <div className="hero__badge">Pokédex</div>
+        <div className="hero__badge">POKÉDEX</div>
         <h1 className="hero__title">
-          Poké<span className="hero__title-accent">dex</span>
+          Pokédex <span className="hero__title-accent">/ PokeAPI</span>
         </h1>
         <p className="hero__subtitle">
           Datos en vivo de PokeAPI. Busca por nombre o explora la lista.
