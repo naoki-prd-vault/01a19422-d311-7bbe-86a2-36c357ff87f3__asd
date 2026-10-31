@@ -60,7 +60,7 @@ button {
 /* ---------- Hero ---------- */
 .hero {
   border: var(--border);
-  background: var(--yellow);
+  background: var(--green);
   box-shadow: var(--shadow);
   padding: 28px 24px 32px;
   margin-bottom: 40px;
